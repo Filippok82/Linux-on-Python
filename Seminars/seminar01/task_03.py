@@ -7,10 +7,13 @@
 import subprocess
 
 if __name__ == '__main__':
-    result = subprocess.run("cat /etc/os-release", shell=True, stdout=subprocess.PIPE, encoding="utf-8")
-    out = result.stdout
-
-    if result.returncode == 0 and "22.04.1" in out and "jammy" in out:
-        print("SUCCESS")
+    result = subprocess.run(["cat /etc/os-release\n"], shell=True, stdout=subprocess.PIPE, encoding="utf-8")
+    out = result.stdout.splitlines()
+    print(out)
+    if result.returncode == 0:
+        if 'VERSION="22.04.1 LTS (Jammy Jellyfish)"' in out and 'VERSION_CODENAME=jammy' in out:
+            print("SUCCESS")
+        else:
+            print("FAIL")
     else:
-        print("FAIL")
+        print("ERROR")
