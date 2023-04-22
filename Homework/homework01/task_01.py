@@ -11,7 +11,7 @@ import subprocess
 def func(*args):
     result = subprocess.run(args, shell=True, stdout=subprocess.PIPE, encoding="utf-8")
     out = result.stdout
-
+    print(out)
     if result.returncode == 0 and text in out:
         return True
     else:
@@ -19,7 +19,7 @@ def func(*args):
 
 
 if __name__ == '__main__':
-    comand = "cat /home/kurara/test01.sh"
+    comand = "cat /home/user/test2.sh"
     text = 'echo "Homework01"'
 
     print(func(comand, text))
