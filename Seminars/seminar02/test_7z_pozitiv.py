@@ -1,15 +1,7 @@
-import subprocess
+from checkout import checkout
 
 pass_dir = "/home/user/tst"
 path_arx = "/home/user/arx1"
-
-
-def checkout(cmd, text):
-    result = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, encoding="utf-8")
-    if text in result.stdout and result.returncode == 0:
-        return True
-    else:
-        return False
 
 
 def test_step1():
@@ -25,3 +17,13 @@ def test_step2():
 def test_step3():
     # test3
     assert checkout("cd {}; 7z d {}".format(pass_dir, path_arx), "Everything is Ok"), "test3 Fail"
+
+
+def test_step6():
+    # test6
+    assert checkout("cd /home/user; 7z l arx1.7z", "Listing archive: arx1.7z"), "test6 Fail"
+
+
+def test_step7():
+    # test7
+    assert checkout("cd /home/user; 7z x arx1.7z", "Everything is Ok"), "test7 Fail"
