@@ -5,4 +5,5 @@ folder_ext: /home/user/tst/ext
 folder_badarx: /home/user/tst/badarx
 folder_ext2: /home/user/tst/ext2
 count: 5
-size: 10
+size: 1
+namefile: /home/user/tst/stat.txt

@@ -1,5 +1,4 @@
 from checkout import checkout_positive
-import yaml
 
 folder_in = "/home/user/tst/file"
 folder_out = "/home/user/tst/out"
@@ -50,14 +49,15 @@ def test_step6(clear_folders, make_files, make_folders, make_subfolder):
     res.append(checkout_positive("cd {}; 7z x arx1.7z -o{} -y".format(folder_out, folder_ext2), "Everything is Ok"))
     for item in make_files:
         res.append(checkout_positive("ls {}".format(folder_ext2), item))
-    res.append(checkout_positive("ls {}".format(folder_ext2), make_subfolder[0]))
-    res.append(checkout_positive("ls {}/{}".format(folder_ext2, make_subfolder[0]), make_subfolder[1]))
+        res.append(checkout_positive("ls {}".format(folder_ext2), make_subfolder[0]))
+        res.append(checkout_positive("ls {}/{}".format(folder_ext2, make_subfolder[0]), make_subfolder[1]))
     assert all(res)
 
 
 def test_step7():
-    assert checkout_positive("7z d {}/arx1.7z".format(folder_out), "Everything is Ok"), "Test1 Fail"
+    assert checkout_positive("7z d {}/arx1.7z".format(folder_out), "Everything is Ok"), "Test7 Fail"
 
 
-# def test_step8():
-#     assert checkout_positive()
+# def test_step8(make_files):
+#     assert checkout_positive("cd {}; 7z a -t zip {}".format(folder_in, folder_out),
+#                              "Everything is Ok"), "Test8 Fail"
