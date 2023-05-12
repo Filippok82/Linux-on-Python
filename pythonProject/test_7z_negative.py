@@ -1,15 +1,20 @@
-from checkout import checkout_negative
+import yaml
 
-folder_out = "/home/user/tst"
-folder_ext = "/home/user/tst/ext"
-path_arx = "/home/user/tst/badarx.7z"
+from checkout import ssh_checkout_negative
+
+with open("config.yaml") as f:
+    data = yaml.safe_load(f)
 
 
 def test_step1(make_bad_arx):
     # test1
-    assert checkout_negative("d {}; 7z e {} -o{} -y".format(folder_out, path_arx, folder_ext), "ERROR"), "Test4 Fail"
+    assert ssh_checkout_negative(data["host"], data["user"], data["password"],
+                                 "d {}; 7z e {} -o{} -y".format(data["folder_out"], data["path_arx"],
+                                                                data["folder_ext"]),
+                                 "ERROR"), "Test4 Fail"
 
 
 def test_step2(make_bad_arx):
     # test2
-    assert checkout_negative("cd {}; 7z t {}".format(folder_out, path_arx), "ERROR"), "Test5 Fail"
+    assert ssh_checkout_negative(data["host"], data["user"], data["password"],
+                                 "cd {}; 7z t {}".format(data["folder_out"], data["path_arx"]), "ERROR"), "Test5 Fail"

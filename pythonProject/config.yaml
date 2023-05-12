@@ -1,9 +1,19 @@
 
-folder_in: /home/user/tst/file
-folder_out: /home/user/tst/out
-folder_ext: /home/user/tst/ext
-folder_badarx: /home/user/tst/badarx
-folder_ext2: /home/user/tst/ext2
+folder_in: /home/user22/tst
+folder_out: /home/user22/out
+folder_ext: /home/user22/ext
+folder_badarx: /home/user22/badarx
+folder_ext2: /home/user22/ext2
+path_arx: /home/user22/badarx.7z
 count: 5
 size: 1
 namefile: /home/user/tst/stat.txt
+expansion: 7z
+
+host: 0.0.0.0
+user: user22
+password: "2222"
+local_path: /home/user/p7zip-full.deb
+remote_path: /home/user22/p7zip-full.deb
+pkgname: p7zip-full
+path_journal: /home/user/journal.txt
